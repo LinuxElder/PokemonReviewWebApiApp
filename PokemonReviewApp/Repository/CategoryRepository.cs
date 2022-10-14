@@ -17,16 +17,17 @@ namespace PokemonReviewApp.Repository
         {
             return _context.Categories.Any(c => c.Id == id);
         }
-                
+
+        public bool CategoryExistsByName(string id)
+        {
+            return _context.Categories.Any(c => c.Name == id);
+        }
+
         public Category GetCategory(int id)
         {
             return _context.Categories.Where(p => p.Id == id).FirstOrDefault();
         }
 
-        public Category GetCategory(string name)
-        {
-            return _context.Categories.Where(s => s.Name == name).FirstOrDefault();
-        }
 
         public ICollection<Pokemon> GetPokemonByCategory(int id)
         {

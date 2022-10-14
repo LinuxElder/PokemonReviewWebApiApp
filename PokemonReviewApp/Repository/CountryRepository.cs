@@ -38,9 +38,10 @@ namespace PokemonReviewApp.Repository
             throw new NotImplementedException();
         }
 
-        public ICollection<Country> GetOwnersFromACountry(int countryId)
+        public ICollection<Owner> GetOwnersFromACountry(int id)
         {
-            throw new NotImplementedException();
+
+            return _context.PokemonOwners.Where(e => e.OwnerId == id).Select(c => c.Owner).ToList();
         }
     }
 }

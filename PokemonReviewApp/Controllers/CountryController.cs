@@ -51,7 +51,6 @@ namespace PokemonReviewApp.Controllers
             }
             else
             {
-
                 var country = _mapper.Map<CountryDto>(_countryRepository.GetCountry(countryId));
 
                 if (!ModelState.IsValid)
@@ -68,6 +67,25 @@ namespace PokemonReviewApp.Controllers
 
         }
 
+
+        [HttpGet("{ownerId}/countryId")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Owner>))]
+        [ProducesResponseType(400)]
+        public IActionResult GetPokemonByCategoryId(int countryId)
+        {
+            var owners = _mapper.Map<List<OwnerDto>>(_countryRepository.GetOwnersFromACountry(countryId));
+
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            else
+            {
+                return Ok(owners);
+            }
+        }
 
 
     }
