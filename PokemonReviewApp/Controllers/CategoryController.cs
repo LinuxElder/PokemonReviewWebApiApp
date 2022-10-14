@@ -11,12 +11,12 @@ namespace PokemonReviewApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class Category_Controller : Controller
+    public class CategoryController : Controller
     {
         private ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
 
-        public Category_Controller(ICategoryRepository categoryRepository, IMapper mapper)
+        public CategoryController(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;

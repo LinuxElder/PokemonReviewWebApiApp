@@ -9,12 +9,12 @@ namespace PokemonReviewApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class Pokemon_Controller : Controller
+    public class PokemonController : Controller
     {
         private IPokemonRepository _pokemonRepository;
         private readonly IMapper _mapper;
 
-        public Pokemon_Controller(IPokemonRepository pokemonRepository, IMapper mapper)
+        public PokemonController(IPokemonRepository pokemonRepository, IMapper mapper)
         {
             this._pokemonRepository = pokemonRepository;
             this._mapper = mapper;

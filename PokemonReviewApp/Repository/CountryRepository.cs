@@ -42,4 +42,5 @@ namespace PokemonReviewApp.Repository
             return _context.Owners.Where(e => e.Country.Id == id).ToList();
         }
     }
+
 }

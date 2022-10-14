@@ -10,12 +10,12 @@ namespace PokemonReviewApp.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class Country_Controller : Controller
+    public class CountryController : Controller
     {
         private readonly ICountryRepository _countryRepository;
         private readonly IMapper _mapper;
 
-        public Country_Controller(ICountryRepository countryRepository, IMapper mapper)
+        public CountryController(ICountryRepository countryRepository, IMapper mapper)
         {
             _countryRepository = countryRepository;
             _mapper = mapper;
