@@ -32,7 +32,6 @@ namespace PokemonReviewApp.Repository
             return _context.Countries.Where(c => c.Id == id).FirstOrDefault();
         }
 
-
         public Country GetCountryByOwner(int ownerId)
         {
             throw new NotImplementedException();
@@ -40,8 +39,7 @@ namespace PokemonReviewApp.Repository
 
         public ICollection<Owner> GetOwnersFromACountry(int id)
         {
-
-            return _context.PokemonOwners.Where(e => e.OwnerId == id).Select(c => c.Owner).ToList();
+            return _context.Owners.Where(e => e.Country.Id == id).ToList();
         }
     }
 }

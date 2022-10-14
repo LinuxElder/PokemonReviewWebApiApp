@@ -23,7 +23,7 @@ namespace PokemonReviewApp.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Country>))]
-        public IActionResult GetPokemons()
+        public IActionResult GetCountries()
         {
             var countries = _mapper.Map<List<CountryDto>>(_countryRepository.GetCountries());
 
@@ -71,7 +71,7 @@ namespace PokemonReviewApp.Controllers
         [HttpGet("{ownerId}/countryId")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Owner>))]
         [ProducesResponseType(400)]
-        public IActionResult GetPokemonByCategoryId(int countryId)
+        public IActionResult GetOwnersFromACountry(int countryId)
         {
             var owners = _mapper.Map<List<OwnerDto>>(_countryRepository.GetOwnersFromACountry(countryId));
 
