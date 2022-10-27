@@ -16,8 +16,8 @@ namespace PokemonReviewApp.Controllers
 
         public PokemonController(IPokemonRepository pokemonRepository, IMapper mapper)
         {
-            this._pokemonRepository = pokemonRepository;
-            this._mapper = mapper;
+            _pokemonRepository = pokemonRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -40,7 +40,6 @@ namespace PokemonReviewApp.Controllers
         [HttpGet("{pokeId}")]
         [ProducesResponseType(200, Type = typeof(Pokemon))]
         [ProducesResponseType(400)]
-
         public IActionResult GetPokemon(int pokeId)
         {
             if (!_pokemonRepository.PokemonExists(pokeId))
@@ -49,7 +48,7 @@ namespace PokemonReviewApp.Controllers
             }
             else 
             {
-                Console.WriteLine("Null");
+               
                 var pokemon = _mapper.Map<PokemonDto>(_pokemonRepository.GetPokemon(pokeId));
 
                 if (!ModelState.IsValid)

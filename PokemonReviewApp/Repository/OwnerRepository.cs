@@ -24,7 +24,7 @@ namespace PokemonReviewApp.Repository
 
         public ICollection<Owner> GetOwnerOfPokemon(int pokemonId)
         {
-            throw new NotImplementedException();
+            return _context.PokemonOwners.Where(p => p.PokemonId == pokemonId).Select(o => o.Owner).ToList();
         }
 
         public ICollection<Owner> GetOwners()
@@ -34,7 +34,7 @@ namespace PokemonReviewApp.Repository
 
         public ICollection<Pokemon> GetPokemonByOwner(int ownerId)
         {
-            throw new NotImplementedException();
+            return _context.PokemonOwners.Where(p => p.OwnerId == ownerId).Select(p => p.Pokemon).ToList();
         }
 
         public bool OwnerExists(int ownerId)

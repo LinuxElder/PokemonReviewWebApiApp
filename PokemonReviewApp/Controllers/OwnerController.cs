@@ -42,7 +42,6 @@ namespace PokemonReviewApp.Controllers
         [HttpGet("{ownerId}")]
         [ProducesResponseType(200, Type = typeof(Owner))]
         [ProducesResponseType(400)]
-
         public IActionResult GetCountry(int ownerId)
         {
 
@@ -68,7 +67,29 @@ namespace PokemonReviewApp.Controllers
 
         }
 
+        [HttpGet("{ownerId}/pokemon")]
+        [ProducesResponseType(200, Type = typeof(Owner))]
+        [ProducesResponseType(400)]
+        public IActionResult GetPokemonByOwner(int ownderId)
+        {
+            if (!_ownerRepository.OwnerExists(ownderId))
+            {
+                return NotFound();
+            }
+            else
+            {
+                var owner = _mapper.Map<List<PokemonDto>>(_ownerRepository.GetPokemonByOwner(ownderId));
 
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                else
+                {
+                    return Ok(owner);
+                }
+            }
+        }
 
 
     }
